@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react"
+import { FloatingMessage } from "../components/FloatingMessage"
 
 type Message = {
 	id: string
@@ -41,6 +42,7 @@ export default function MessagesPage() {
 				minHeight: "100vh",
 				color: "#8B0000",
 				overflow: "hidden",
+
 			}}
 		>
 			<Headline />
@@ -52,7 +54,7 @@ export default function MessagesPage() {
 				}}
 			>
 				{messages.map((msg) => (
-					<Message {...msg} />
+					 <FloatingMessage key={msg.id} message={msg.message} />
 				))}
 			</div>
 
@@ -82,42 +84,47 @@ export default function MessagesPage() {
 	)
 }
 
-function Message(msg: Message) {
-	return (
-		<div
-			key={msg.id}
-			style={{
-				position: "absolute",
-				top: Math.random() * 80 + "vh", // Zufällige Position
-				left: Math.random() * 80 + "vw", // Zufällige Position
-				transform: `translate(-50%, -50%) rotate(${Math.random() * 20 - 10}deg)`, // Leichte Drehung
-				backgroundColor: "#f5f5dc",
-				color: "#8B0000",
-				padding: "1rem",
-				width: "220px",
-				minHeight: "100px",
-				borderRadius: "8px",
-				boxShadow: "2px 2px 10px rgba(0,0,0,0.4)",
-				fontSize: "1rem",
-				whiteSpace: "pre-wrap",
-			}}
-		>
-			{msg.message}
-		</div>
-	)
-}
+// function Message(msg: Message) {
+// 	return (
+// 		<div
+// 			style={{
+// 				position: "absolute",
+// 				top: Math.random() * 90 + 5 + "vh", // Zufällige Position
+// 				left: Math.random() * 90 + 5 + "vw", // Zufällige Position
+// 				transform: `translate(-50%, -50%) rotate(${Math.random() * 20 - 10}deg)`, // Leichte Drehung
+// 				backgroundColor: "#f5f5dc",
+// 				color: "#8B0000",
+// 				padding: "1rem",
+// 				width: "220px",
+// 				minHeight: "100px",
+// 				borderRadius: "8px",
+// 				boxShadow: "2px 2px 10px rgba(0,0,0,0.4)",
+// 				fontSize: "1rem",
+// 				whiteSpace: "pre-wrap",
+// 			}}
+// 		>
+// 			{msg.message}
+// 		</div>
+// 	)
+// }
 
 function Headline() {
 	return (
-		<h1
+		<div
 			style={{
-				fontSize: "2rem",
-				marginBottom: "1.5rem",
+				position: "absolute",
+				top: "50%",
+				left: "50%",
+				transform: "translate(-50%, -50%)",
 				color: "#FFFFFF",
+				textAlign: "center",
+				fontSize: "19rem",
+				fontWeight: "bold",
+				//zIndex: 1000, // bleibt über anderen Elementen
 			}}
 		>
-			💬 Feedback-Wand
-		</h1>
+			FEEDBACK WAND
+		</div>
 	)
 }
 
